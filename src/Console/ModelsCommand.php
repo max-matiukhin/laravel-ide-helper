@@ -759,9 +759,9 @@ class ModelsCommand extends Command
             $this->setMethod('forceDelete', 'bool|null', []);
             $this->setMethod('restore', 'bool|null', []);
 
-            $this->setMethod('withTrashed', '\Illuminate\Database\Query\Builder|\\' . get_class($model), []);
-            $this->setMethod('withoutTrashed', '\Illuminate\Database\Query\Builder|\\' . get_class($model), []);
-            $this->setMethod('onlyTrashed', '\Illuminate\Database\Query\Builder|\\' . get_class($model), []);
+            $this->setMethod('withTrashed', '\Illuminate\Database\Eloquent\Builder|\\' . get_class($model), []);
+            $this->setMethod('withoutTrashed', '\Illuminate\Database\Eloquent\Builder|\\' . get_class($model), []);
+            $this->setMethod('onlyTrashed', '\Illuminate\Database\Eloquent\Builder|\\' . get_class($model), []);
         }
     }
 }
