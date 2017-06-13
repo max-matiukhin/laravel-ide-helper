@@ -384,7 +384,7 @@ class ModelsCommand extends Command
                 if ($this->write_model_magic_where) {
                     $this->setMethod(
                         Str::camel("where_" . $name),
-                        '\Illuminate\Database\Query\Builder|\\' . get_class($model),
+                        '\Illuminate\Database\Eloquent\Builder|\\' . get_class($model),
                         array('$value')
                     );
                 }
@@ -431,7 +431,7 @@ class ModelsCommand extends Command
                         $args = $this->getParameters($reflection);
                         //Remove the first ($query) argument
                         array_shift($args);
-                        $this->setMethod($name, '\Illuminate\Database\Query\Builder|\\' . $reflection->class, $args);
+                        $this->setMethod($name, '\Illuminate\Database\Eloquent\Builder|\\' . $reflection->class, $args);
                     }
                 } elseif (!method_exists('Illuminate\Database\Eloquent\Model', $method)
                     && !Str::startsWith($method, 'get')
@@ -759,9 +759,9 @@ class ModelsCommand extends Command
             $this->setMethod('forceDelete', 'bool|null', []);
             $this->setMethod('restore', 'bool|null', []);
 
-            $this->setMethod('withTrashed', '\Illuminate\Database\Query\Builder|\\' . get_class($model), []);
-            $this->setMethod('withoutTrashed', '\Illuminate\Database\Query\Builder|\\' . get_class($model), []);
-            $this->setMethod('onlyTrashed', '\Illuminate\Database\Query\Builder|\\' . get_class($model), []);
+            $this->setMethod('withTrashed', '\Illuminate\Database\Eloquent\Builder|\\' . get_class($model), []);
+            $this->setMethod('withoutTrashed', '\Illuminate\Database\Eloquent\Builder|\\' . get_class($model), []);
+            $this->setMethod('onlyTrashed', '\Illuminate\Database\Eloquent\Builder|\\' . get_class($model), []);
         }
     }
 }
